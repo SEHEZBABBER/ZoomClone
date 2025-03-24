@@ -24,6 +24,7 @@ export const login = async (req, res) => {
 };
 export const register = async (req, res) => {
   let { username, password, email } = req.body;
+  console.log(req.body);
   if (!username || !password || !email)
     return res.status(400).json({ message: "Missing Credentials" });
   if (!email.includes("@"))
@@ -55,3 +56,8 @@ export const register = async (req, res) => {
   });
   res.status(200).json({ message: "user registerd successfully" });
 };
+export const userdata = async(req,res)=>{
+    let token = req.cookies.token;
+    let decoded = jwt.verify(token,"asdfasdfasdfasdfgagdfx");
+    res.status(200).json({message:decoded.username});
+}

@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import "../App.css"
+import { userContext } from "../context/userContext";
 function LandingPage() {
+    const {username} = useContext(userContext);
     return ( 
         <div className="landingPageContainer">
             <nav>
                 <div className="title">
-                    <h2>Zoom Clone</h2>
+                    {username?<h2>{username}</h2>:<h2>Zoom Clone</h2>}
                 </div>
                 <div className="linkers">
                     <p>Join as Guest</p>
