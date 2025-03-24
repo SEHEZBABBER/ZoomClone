@@ -1,0 +1,93 @@
+.landingPageContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: url('../public/background.png');
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-size: cover;
+}
+#root{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+.landingPageContainer nav{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.landingPageContainer nav .title h2{
+    color : white;
+    padding-inline: 2rem;
+    font-size: 2rem;
+}
+.landingPageContainer nav .linkers p{
+    color:white;
+    font-size: 1.5rem;
+    margin: 0px;
+    padding: 0px;
+    line-height: 40px;
+}
+.landingPageContainer nav .linkers{
+    display: flex;
+    gap: 3rem;
+    margin-right: 2rem;
+    align-items: center;
+    cursor: pointer;
+}
+.landingPageContainer nav .linkers div[role="button"]{
+    background-color: orange;
+    border-radius: 5px;
+    padding-inline: 10px;
+    height: 40px;
+}
+.mainContainer{
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3rem;
+}
+.mainContainer .text{
+    width: 50vw;
+}
+.mainContainer .image img{
+    height: 70vh;
+    margin-right: 150px;
+}
+.mainContainer .text h1{
+    font-size: 4rem;
+    padding-inline: 2rem;
+    margin: 1rem;
+}
+.mainContainer .text h3{
+    font-size: 2rem;
+    padding-inline: 2rem;
+    opacity: 0.8;
+    margin: 1rem;
+}
+.mainContainer .text div[role="button"]{
+    background-color: orange;
+    color: white;
+    width: fit-content;
+    padding-inline:1rem;
+    padding-block: 3px;
+    border-radius: 5px;
+    margin-inline: 3rem;
+}
+.mainContainer .text div[role="button"] p{
+    padding: 0px;
+    font-size: 20px;
+}
