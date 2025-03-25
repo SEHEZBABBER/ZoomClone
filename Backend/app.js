@@ -5,6 +5,11 @@ import cors from "cors";
 import { connectToSocket } from "./Controllers/SocketManager.js";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRouter.js"
+
+
+
+
+
 const app = express();
 app.use(cors({
     origin:'http://localhost:5173',
@@ -18,6 +23,10 @@ app.set("port",process.env.port||8000);
 app.use('/',userRouter);
 const server = createServer(app);
 const io = connectToSocket(server);
+
+
+
+
 async function main() {
     await mongoose.connect("mongodb+srv://Sehez3010:3Tcy1Uh7KVF3lUUz@zoomclone.fswdm.mongodb.net/Zoom_Clone?retryWrites=true&w=majority&appName=ZoomClone")
     .then(()=>console.log("Connection Successful"))

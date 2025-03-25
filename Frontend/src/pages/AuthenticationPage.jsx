@@ -68,11 +68,12 @@ export default function AuthenticationPage() {
         })
         .then(() => {
           axios.get("http://localhost:8000/userdata",{withCredentials:true}).then((res) => {
-            setusername(res.datamessage);
+            setusername(res.data.message);
           });
           window.location.href = "/";
         })
         .catch((err) => {
+          console.log(err);
           seterror(err.response.data.message);
         });
     }

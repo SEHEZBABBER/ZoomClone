@@ -91,3 +91,27 @@ body{
     padding: 0px;
     font-size: 20px;
 }
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    margin-top: 50px;
+}
+.video-container {
+    background-color: #000;
+    height: 300px;
+    border-radius: 8px;
+    position: relative;
+}
+.video-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+}
+.controls {
+    margin-top: 15px;
+}
+.btn-join {
+    margin-top: 30px;
+}

@@ -6,6 +6,7 @@ import { userContext, UserProvider } from './context/userContext';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import axios from 'axios';
+import VideoComponent from './pages/VideoComponent';
 function App() {
   const { setusername } = useContext(userContext);
   useEffect(()=>{
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/auth' element={<AuthenticationPage/>}/>
+        <Route path='/joincall' element={<VideoComponent/>}/>
       </Routes>
     </Router>
     </>
