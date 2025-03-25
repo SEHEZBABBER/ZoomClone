@@ -2,7 +2,9 @@ import { useContext } from "react";
 import "../App.css"
 import { userContext } from "../context/userContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function LandingPage() {
+    const navigate = useNavigate();
     const {username,setusername} = useContext(userContext);
     function handlelogout(){
         axios.get("http://localhost:8000/logout",{withCredentials:true})
@@ -16,7 +18,7 @@ function LandingPage() {
                 </div>
                 <div className="linkers">
                     {!username ? (
-                    <div role="button" onClick={()=>window.location.href = '/auth'}>
+                    <div role="button" onClick={()=>navigate('/auth')}>
                         <p>Login</p>
                     </div>
                     ):(
@@ -30,7 +32,7 @@ function LandingPage() {
                 <div className="text">
                     <h1 style={{color:"white"}}><span style={{color:"orange"}}>Connect </span>with your Loved Ones</h1>
                     <h3 style={{color:"white"}}>Cover a distance by zoom</h3>
-                    <div role="button" onClick={()=>window.location.href="/joincall"}>
+                    <div role="button" onClick={()=>navigate("/joincall")}>
                         <p>Get Started</p>
                     </div>
                 </div>

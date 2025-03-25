@@ -14,12 +14,14 @@ import Tab from "@mui/material/Tab";
 import axios from "axios";
 import { userContext } from "../context/userContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 export default function AuthenticationPage() {
   // State to switch between login and register
   const [tabValue, setTabValue] = React.useState(0);
+  const navigate = useNavigate();
 
   // State for form data
   const [formData, setFormData] = React.useState({
@@ -56,7 +58,7 @@ export default function AuthenticationPage() {
           axios.get("http://localhost:8000/userdata",{withCredentials:true}).then((res) => {
             setusername(res.data.message);
           });
-          window.location.href = "/";
+          navigate("/");
         })
         .catch((err) => {
           seterror(err.response.data.message);
@@ -70,7 +72,7 @@ export default function AuthenticationPage() {
           axios.get("http://localhost:8000/userdata",{withCredentials:true}).then((res) => {
             setusername(res.data.message);
           });
-          window.location.href = "/";
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);

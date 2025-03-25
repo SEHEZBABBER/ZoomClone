@@ -3,8 +3,10 @@ import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { userContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 function VideoComponent() {
+    const navigate = useNavigate();
     const { username, setusername } = useContext(userContext);
     const [camerapermission, setcamerapermission] = useState(null);
     const [micpermission, setmicpermission] = useState(null);
@@ -19,7 +21,7 @@ function VideoComponent() {
             .get("http://localhost:8000/userdata", { withCredentials: true })
             .then((res) => setusername(res.data.message))
             .catch(() => {
-                window.location.href = "/auth";
+                navigate("/auth");
             });
     }, []);
 
@@ -104,7 +106,7 @@ function VideoComponent() {
                     <button
                         className="btn btn-primary btn-lg btn-join"
                         style={{ width: "fit-content" }}
-                        onClick={() => (window.location.href = "/")}
+                        onClick={() => (navigate("/"))}
                     >
                         Home
                     </button>
