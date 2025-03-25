@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import axios from 'axios';
 import VideoComponent from './pages/VideoComponent';
+import Room from './pages/Room';
 function App() {
   const { setusername } = useContext(userContext);
   useEffect(()=>{
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/auth' element={<AuthenticationPage/>}/>
         <Route path='/joincall' element={<VideoComponent/>}/>
+        <Route path='/room/:roomId' element={<Room/>}/>
       </Routes>
     </Router>
     </>

@@ -4,8 +4,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { userContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+import { SocketContext } from "../context/socketContext";
 
 function VideoComponent() {
+    const socket = useContext(SocketContext);
+
+    function handleJoin(){
+        socket.emit('join-call',{meetingNumber,username});
+    }
+
+
+    useEffect(()=>{
+        socket.on('joined-call',(roomId)=>{
+            navigate(`/room/${roomId}`)
+        })
+    },[socket])
+
+
     const navigate = useNavigate();
     const { username, setusername } = useContext(userContext);
     const [camerapermission, setcamerapermission] = useState(null);
@@ -15,7 +30,7 @@ function VideoComponent() {
     const [mic, setmic] = useState(true);
     const videoRef = useRef(null);
     const streamRef = useRef(null);
-
+    const [meetingNumber,setMettingNumber] = useState(null);
     useEffect(() => {
         axios
             .get("http://localhost:8000/userdata", { withCredentials: true })
@@ -73,7 +88,7 @@ function VideoComponent() {
                             ref={videoRef}
                             autoPlay
                             playsInline
-                            muted={!mic}
+                            muted
                             className="w-50"
                             style={{ height: "400px", borderRadius: "10px" }}
                         />
@@ -99,8 +114,10 @@ function VideoComponent() {
                         className="form-control mb-3"
                         id="meetinnumber"
                         placeholder="Enter Meeting Id"
+                        value={meetingNumber}
+                        onChange={(e)=>setMettingNumber(e.target.value)}
                     />
-                    <button className="btn btn-primary btn-lg btn-join mb-2" style={{ width: "fit-content" }}>
+                    <button className="btn btn-primary btn-lg btn-join mb-2" style={{ width: "fit-content" }} onClick={handleJoin}>
                         Join Meeting
                     </button>
                     <button
