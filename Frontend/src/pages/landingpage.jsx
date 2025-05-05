@@ -14,7 +14,7 @@ function LandingPage() {
         <div className="landingPageContainer">
             <nav>
                 <div className="title">
-                    {username?<h2>{username}</h2>:<h2>Zoom Clone</h2>}
+                    {username?<h2>{username}</h2>:<h2 style={{fontSize:"50px"}}>Joom</h2>}
                 </div>
                 <div className="linkers">
                     {!username ? (
@@ -31,7 +31,7 @@ function LandingPage() {
             <div className="mainContainer">
                 <div className="text">
                     <h1 style={{color:"white"}}><span style={{color:"orange"}}>Connect </span>with your Loved Ones</h1>
-                    <h3 style={{color:"white"}}>Cover a distance by zoom</h3>
+                    <h3 style={{color:"white"}}>Cover a distance by Joom</h3>
                     <div role="button" onClick={()=>navigate("/joincall")}>
                         <p>Get Started</p>
                     </div>

@@ -28,7 +28,7 @@ const io = connectToSocket(server);
 
 
 async function main() {
-    await mongoose.connect("mongodb+srv://Sehez3010:3Tcy1Uh7KVF3lUUz@zoomclone.fswdm.mongodb.net/Zoom_Clone?retryWrites=true&w=majority&appName=ZoomClone")
+    await mongoose.connect("mongodb+srv://Sehez3010:SHER1005@zoomclone.fswdm.mongodb.net/Zoom_Clone?retryWrites=true&w=majority&appName=ZoomClone")
     .then(()=>console.log("Connection Successful"))
     .catch((err)=>console.log(err));
     server.listen(app.get("port"),()=>{

@@ -18,12 +18,13 @@ export const PeerProvider = (props) => {
   const [remoteStreams, setRemoteStreams] = useState([]);
 
   // Create and send an offer
-  const createOffer = async () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const createOffer = useCallback(async () => {
     const offer = await peer.createOffer();
     await peer.setLocalDescription(offer);
     console.log("Offer created and set as local description:", offer);
     return offer;
-  };
+  });
 
   // Create and send an answer
   const createAnswer = async (offer) => {
@@ -54,8 +55,11 @@ export const PeerProvider = (props) => {
     const streams = ev.streams;
     if (streams.length > 0) {
       console.log("New remote stream received:", streams[0]);
-      setRemoteStreams((prevStreams) => [...prevStreams, streams[0]]);
+      let newstreams = [...remoteStreams];
+      newstreams.push(streams[0])
+      setRemoteStreams(newstreams);
     }
+
   }, []);
 
   // Handle negotiationneeded event to create and send offer
