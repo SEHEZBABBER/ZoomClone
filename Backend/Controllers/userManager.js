@@ -11,6 +11,7 @@ export const login = async (req, res) => {
   let check_user_exists = await userModel.findOne({ email: email });
   if (!check_user_exists)
     return res.status(400).json({ message: "user is not registerd" });
+  if(check_user_exists.password !== password)return res.status(400).json({message:"Username or Password dont match"});
   let token = jwt.sign({username:check_user_exists.username,email:email}, "asdfasdfasdfasdfgagdfx", {
     expiresIn: "30h",
   });
@@ -23,6 +24,7 @@ export const login = async (req, res) => {
   res.status(200).json({ message: "login successful" });
 };
 export const register = async (req, res) => {
+  console.log(req.body);
   let { username, password, email } = req.body;
   console.log(req.body);
   if (!username || !password || !email)
